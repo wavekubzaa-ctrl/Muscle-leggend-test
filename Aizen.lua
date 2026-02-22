@@ -1,76 +1,66 @@
 --[[
-    Muscle Legends: Aizen Sosuke Edition
-    Features: Auto Farm, Auto Rebirth
-    Theme: Deep Purple & Dark (Aizen Theme)
+    TITLE: BUKWAVE X AIZEN
+    GAME: Muscle Legends
+    CREDIT: BUKWAVE X PREMIER HUB
 --]]
 
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-    Name = "Aizen Hub | Muscle Legends",
-    LoadingTitle = "Welcome to my Soul Society...",
+    Name = "BUKWAVE X AIZEN | Muscle Legends",
+    LoadingTitle = "Everything according to plan...",
     LoadingSubtitle = "by Gemini Brother",
     ConfigurationSaving = {
         Enabled = true,
-        FolderName = "AizenMuscle",
+        FolderName = "BukwaveAizen",
         FileName = "Config"
     },
     Discord = {
         Enabled = false,
-        Invite = "noinviteneeded",
+        Invite = "",
         RememberJoins = true
     },
-    KeySystem = false -- ตั้งเป็น false เพื่อความสะดวกของน้องชาย
+    KeySystem = false
 })
 
--- // Variables //
 local _G = getgenv()
 _G.AutoFarm = false
 _G.AutoRebirth = false
 
--- // UI Layout //
--- ใส่รูป Aizen ในหน้าแรก (ใช้ Image ID จาก Roblox)
-local MainTab = Window:CreateTab("Aizen's Power", 4483362458) 
+local MainTab = Window:CreateTab("Aizen's Domain", 4483362458) 
 
-MainTab:CreateSection("Aizen Sosuke - The Ruler")
+MainTab:CreateSection("Lord Aizen - BUKWAVE Edition")
+MainTab:CreateLabel("The sky is now mine.", 10837502488)
 
--- แสดงรูป Aizen (ใช้ภาพประกอบเท่ๆ)
-MainTab:CreateLabel("Everything is going according to my plan.", 10837502488) -- Image ID ตัวอย่างรูป Aizen
-
--- // Auto Farm Logic //
 local function startAutoFarm()
     task.spawn(function()
         while _G.AutoFarm do
-            -- เช็คว่ามีเครื่องมือในตัวหรือในมือไหม
             local player = game.Players.LocalPlayer
             local char = player.Character
             local tool = char:FindFirstChildOfClass("Tool") or player.Backpack:FindFirstChildOfClass("Tool")
             
             if tool then
                 if tool.Parent ~= char then
-                    tool.Parent = char -- สวมใส่ไอเทมถ้ายังไม่ถือ
+                    tool.Parent = char
                 end
-                tool:Activate() -- กดใช้งาน
+                tool:Activate()
             end
-            task.wait(0.01) -- ความเร็วระดับยมทูต
+            task.wait(0.01)
         end
     end)
 end
 
--- // Auto Rebirth Logic //
 local function startAutoRebirth()
     task.spawn(function()
         while _G.AutoRebirth do
-            -- เรียกใช้ Remote ของเกมเพื่อกด Rebirth
             game:GetService("ReplicatedStorage").rEvents.rebirthRemote:InvokeServer("rebirthRequest")
-            task.wait(1) -- เช็คทุกๆ 1 วินาที
+            task.wait(1)
         end
     end)
 end
 
--- // Toggles //
 MainTab:CreateToggle({
-    Name = "Auto Lift (ยกน้ำหนัก)",
+    Name = "Auto Lift Weights",
     CurrentValue = false,
     Flag = "AutoLift",
     Callback = function(Value)
@@ -78,8 +68,8 @@ MainTab:CreateToggle({
         if Value then
             startAutoFarm()
             Rayfield:Notify({
-                Title = "Power Awakening",
-                Content = "You are getting stronger...",
+                Title = "Power Surge",
+                Content = "Ascending to the next level...",
                 Duration = 3,
                 Image = 10837502488,
             })
@@ -88,7 +78,7 @@ MainTab:CreateToggle({
 })
 
 MainTab:CreateToggle({
-    Name = "Auto Rebirth (เกิดใหม่อัตโนมัติ)",
+    Name = "Auto Rebirth Loop",
     CurrentValue = false,
     Flag = "AutoReb",
     Callback = function(Value)
@@ -99,19 +89,18 @@ MainTab:CreateToggle({
     end,
 })
 
-MainTab:CreateSection("Settings")
+MainTab:CreateSection("Client Settings")
 
 MainTab:CreateButton({
-    Name = "Destroy UI",
+    Name = "Unload Script",
     Callback = function()
         Rayfield:Destroy()
     end,
 })
 
--- // Notification //
 Rayfield:Notify({
-    Title = "Aizen Script Loaded",
-    Content = "The sky is now mine.",
+    Title = "BUKWAVE X AIZEN Loaded",
+    Content = "Welcome to the Soul Society.",
     Duration = 5,
-    Image = 10837502488, -- รูปหน้าไอเซ็นตอนแจ้งเตือน
+    Image = 10837502488,
 })
