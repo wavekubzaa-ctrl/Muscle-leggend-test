@@ -2,8 +2,7 @@
     TITLE: BUKWAVE X AIZEN
     GAME: Muscle Legends
     OPTIMIZED FOR: Arceus X Neo
-    LANGUAGE: English 
-    CREDIT:BUKWAVE X PREMIERHUB
+    LANGUAGE: English
 --]]
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
